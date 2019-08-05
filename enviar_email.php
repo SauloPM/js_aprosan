@@ -1,7 +1,7 @@
 <?php
 
 // Almacenamos los datos del formulario en variables
-$to      = "ppovmon@gmail.com";
+$to      = "comercial@aprosan.es";
 $from    = $_POST['email'  ];
 $name    = $_POST['nombre' ];
 $subject = $_POST['asunto' ];
@@ -10,7 +10,7 @@ $message = $_POST['mensaje'];
 $message = "
 <html>
 	<head>
-		<title>Patricia Poveda Montesdeoca</title>
+		<title>Aprosán</title>
 	</head>
 	<body>
 		<header>
