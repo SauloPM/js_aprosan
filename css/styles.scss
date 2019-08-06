@@ -402,11 +402,16 @@ h3 {
                 margin: 0 auto 35px;
                 width: 75px;
                 height: 75px;
+                transition: .5s ease-in-out;
             }
 
             .texto {
                 line-height: 25px;
                 margin: 0;
+            }
+
+            &:hover .icono {
+                transform: rotateY(180deg);
             }
 
             &::after {
@@ -686,6 +691,101 @@ h3 {
                     font-size: 10px;
                 }
             }
+        }
+    }
+}
+
+// ─────────────── //
+//     RAZONES     //
+// ─────────────── //
+
+#razones {
+    padding: 150px 0;
+
+    .timeline {
+        position: relative;
+
+        .fila {
+            display: flex;
+
+            .columna {
+                padding: 50px 100px;
+                position: relative;
+                width: 50%;
+
+                .tarjeta {
+                    border: 1px solid $primary;
+                    border-radius: 5px;
+                    line-height: 30px;
+                    padding: 25px;
+                    position: relative;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        background: white;
+                        box-shadow: 1px -1px 0 0 $primary;
+                        position: absolute;
+                        top: 50%;
+                        right: -12px;
+                        bottom: 0;
+                        width: 25px;
+                        height: 25px;
+                        transform: translateY(-50%) rotate(45deg);
+                    }
+                }
+
+                .icono {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: $primary;
+                    font-size: 25px;
+                    background: white;
+                    border-radius: 50%;
+                    box-shadow: 0 0 0 1px $lightprimary, 0 0 0 3px white, 0 0 0 6px $primary;
+                    position: absolute;
+                    top: 50%;
+                    right: -25px;
+                    z-index: 25;
+                    width: 50px;
+                    height: 50px;
+                    transform: translateY(-50%);
+                }
+            }
+
+            &.invertida {
+                justify-content: flex-end;
+
+                .tarjeta {
+                    text-align: right;
+
+                    &::after {
+                        box-shadow: -1px 1px 0 0 $primary;
+                        left: -12px;
+                        right: auto;
+                    }
+                }
+
+                .icono {
+                    left: -25px;
+                    right: auto;
+                }
+            }
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            background: linear-gradient(white 50%, $primary 50%) top repeat-y;
+            background-size: 15px 15px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            bottom: 0;
+            width: 1px;
+            height: 100%;
+            transform: translateX(-50%);
         }
     }
 }
