@@ -196,6 +196,7 @@ h3 {
         flex-direction: column;
         background: rgba(000,180,255,.9);
         padding: 15px;
+        padding: 50px;
         position: relative;
 
         h1 {
@@ -389,11 +390,23 @@ h3 {
     }
 }
 
+// ─────────────── //
+//     CALLOUT     //
+// ─────────────── //
+
+.callout {
+    color: white;
+    padding: 150px 0;
+    background: $primary;
+    background: linear-gradient(to right, $darkprimary, $lightprimary);
+}
+
 // ───────────────── //
 //     SERVICIOS     //
 // ───────────────── //
 
 #servicios {
+    padding: 100px 0;
 
     h3 + p {
         text-align: center;
@@ -581,20 +594,31 @@ h3 {
 // ─────────────── //
 
 #tarifas {
+    background: url(../img/bg/callout.jpg) fixed no-repeat center;
+    background-size: cover;
+    padding: 125px 0;
+    position: relative;
+
+    .overlay {
+        background: rgba(255,255,255,.9);
+    }
 
     .tarjetas {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+        position: relative;
+        z-index: 50;
 
         .tarjeta {
             display: flex;
             justify-content: space-between;
             flex-direction: column;
+            background: white;
             border-radius: 5px;
             box-shadow: 2px 2px 5px lightgrey;
-            margin: 5px 10px;
+            margin: 10px;
             width: 300px;
             height: 475px;
             overflow: hidden;
