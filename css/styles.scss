@@ -7,8 +7,10 @@ $gray        : rgb(225,225,225);
 $lightgray   : rgb(245,245,245);
 
 // Responsive
-$mobile: 480px;
-$tablet: 768px;
+$mobile : 480px;
+$tablet : 768px;
+$laptop : 980px;
+$desktop: 1200px;
 
 // ─────────────── //
 //     GENERAL     //
@@ -46,16 +48,23 @@ p {
 h3 {
     display: block;
     color: $texto;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
     font-family: "Montserrat", serif;
     text-align: center;
     text-transform: uppercase;
     border-bottom: 1px solid $primary;
     letter-spacing: 5px;
-    line-height: 50px;
+    line-height: 30px;
     padding: 0 0 35px;
     margin: 0 0 100px;
+}
+
+@media only screen and (min-width: $mobile) {
+    h3 {
+        font-size: 18px;
+        line-height: 50px;
+    }
 }
 
 // Text Selection
@@ -80,6 +89,7 @@ h3 {
     text-decoration: none !important;
     background: $darkprimary;
     background: linear-gradient($primary, $darkprimary);
+    border-radius: 50%;
     box-shadow: none;
     position: fixed;
     bottom: 25px;
@@ -91,12 +101,12 @@ h3 {
     opacity: 0;
     transition: .25s ease-in-out;
 
-    .fa {
+    .flecha {
         color: white;
     }
 
     &:hover {
-        transform: scale(1.05);
+        border-radius: 2px;
     }
 }
 
@@ -451,6 +461,7 @@ h3 {
 // ─────────────── //
 
 #ventajas {
+    display: none;
     padding: 0;
 
     // Grid
@@ -718,63 +729,28 @@ h3 {
 #razones {
     padding: 150px 0;
 
-    .timeline {
-        position: relative;
+    // Grid
 
-        .fila {
-            display: flex;
+    .fila {
+        display: flex;
+
+        .columna {
+            padding: 25px 55px 25px 0;
+            position: relative;
+            width: 50%;
+        }
+
+        &.invertida {
+            justify-content: flex-end;
 
             .columna {
-                padding: 50px 100px;
-                position: relative;
-                width: 50%;
+                padding: 25px 0 25px 55px;
 
                 .tarjeta {
-                    border: 1px solid $primary;
-                    border-radius: 5px;
-                    line-height: 30px;
-                    padding: 25px;
-                    position: relative;
 
-                    &::after {
-                        content: "";
-                        display: block;
-                        background: white;
-                        box-shadow: 1px -1px 0 0 $primary;
-                        position: absolute;
-                        top: 50%;
-                        right: -12px;
-                        bottom: 0;
-                        width: 25px;
-                        height: 25px;
-                        transform: translateY(-50%) rotate(45deg);
+                    .texto {
+                        text-align: right;
                     }
-                }
-
-                .icono {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: $primary;
-                    font-size: 25px;
-                    background: white;
-                    border-radius: 50%;
-                    box-shadow: 0 0 0 1px $lightprimary, 0 0 0 3px white, 0 0 0 6px $primary;
-                    position: absolute;
-                    top: 50%;
-                    right: -25px;
-                    z-index: 25;
-                    width: 50px;
-                    height: 50px;
-                    transform: translateY(-50%);
-                }
-            }
-
-            &.invertida {
-                justify-content: flex-end;
-
-                .tarjeta {
-                    text-align: right;
 
                     &::after {
                         box-shadow: -1px 1px 0 0 $primary;
@@ -787,6 +763,58 @@ h3 {
                     left: -25px;
                     right: auto;
                 }
+            }
+        }
+    }
+
+    // Timeline
+
+    .timeline {
+        position: relative;
+
+        .icono {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $primary;
+            font-size: 25px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 1px $lightprimary, 0 0 0 3px white, 0 0 0 6px $primary;
+            position: absolute;
+            top: 50%;
+            right: -25px;
+            z-index: 25;
+            width: 50px;
+            height: 50px;
+            transform: translateY(-50%);
+        }
+
+        .tarjeta {
+            border: 1px solid $primary;
+            border-radius: 5px;
+            line-height: 30px;
+            padding: 25px;
+            position: relative;
+
+            .texto {
+                font-size: 12px;
+                line-height: 25px;
+                margin: 0;
+            }
+
+            &::after {
+                content: "";
+                display: block;
+                background: white;
+                box-shadow: 1px -1px 0 0 $primary;
+                position: absolute;
+                top: 50%;
+                right: -12px;
+                bottom: 0;
+                width: 25px;
+                height: 25px;
+                transform: translateY(-50%) rotate(45deg);
             }
         }
 
@@ -804,6 +832,21 @@ h3 {
             transform: translateX(-50%);
         }
     }
+}
+
+// Mobile First
+
+@media only screen and (min-width: $tablet) {
+    #razones {
+        .timeline .fila           .columna { padding: 50px 100px 50px 0 }
+        .timeline .fila.invertida .columna { padding: 50px 0 50px 100px }
+        .timeline .fila           .columna .tarjeta .texto { font-size: 15px; line-height: 30px }
+    }
+}
+
+@media only screen and (min-width: $desktop) {
+    #razones .timeline .fila .columna,
+    #razones .timeline .fila.invertida .columna { padding: 50px 100px }
 }
 
 // ──────────────── //
