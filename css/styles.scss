@@ -57,13 +57,14 @@ h3 {
     letter-spacing: 5px;
     line-height: 30px;
     padding: 0 0 35px;
-    margin: 0 0 100px;
+    margin: 0 0 75px;
 }
 
 @media only screen and (min-width: $mobile) {
     h3 {
         font-size: 18px;
         line-height: 50px;
+        margin: 0 0 100px;
     }
 }
 
@@ -89,7 +90,7 @@ h3 {
     text-decoration: none !important;
     background: $darkprimary;
     background: linear-gradient($primary, $darkprimary);
-    border-radius: 50%;
+    border-radius: 2px;
     box-shadow: none;
     position: fixed;
     bottom: 25px;
@@ -106,7 +107,7 @@ h3 {
     }
 
     &:hover {
-        border-radius: 2px;
+        border-radius: 50%;
     }
 }
 
@@ -727,94 +728,67 @@ h3 {
 // ─────────────── //
 
 #razones {
-    padding: 150px 0;
-
-    // Grid
-
-    .fila {
-        display: flex;
-
-        .columna {
-            padding: 25px 55px 25px 0;
-            position: relative;
-            width: 50%;
-        }
-
-        &.invertida {
-            justify-content: flex-end;
-
-            .columna {
-                padding: 25px 0 25px 55px;
-
-                .tarjeta {
-
-                    .texto {
-                        text-align: right;
-                    }
-
-                    &::after {
-                        box-shadow: -1px 1px 0 0 $primary;
-                        left: -12px;
-                        right: auto;
-                    }
-                }
-
-                .icono {
-                    left: -25px;
-                    right: auto;
-                }
-            }
-        }
-    }
-
-    // Timeline
+    padding: 100px 0;
 
     .timeline {
         position: relative;
 
-        .icono {
+        .fila {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: $primary;
-            font-size: 25px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 0 1px $lightprimary, 0 0 0 3px white, 0 0 0 6px $primary;
-            position: absolute;
-            top: 50%;
-            right: -25px;
-            z-index: 25;
-            width: 50px;
-            height: 50px;
-            transform: translateY(-50%);
-        }
+            justify-content: flex-end;
 
-        .tarjeta {
-            border: 1px solid $primary;
-            border-radius: 5px;
-            line-height: 30px;
-            padding: 25px;
-            position: relative;
+            .columna {
+                padding: 25px 0px 25px 90px;
+                position: relative;
+                width: 100%;
 
-            .texto {
-                font-size: 12px;
-                line-height: 25px;
-                margin: 0;
-            }
-
-            &::after {
-                content: "";
-                display: block;
-                background: white;
-                box-shadow: 1px -1px 0 0 $primary;
-                position: absolute;
-                top: 50%;
-                right: -12px;
-                bottom: 0;
-                width: 25px;
-                height: 25px;
-                transform: translateY(-50%) rotate(45deg);
+                .tarjeta {
+                    border: 1px solid $primary;
+                    border-radius: 5px;
+                    line-height: 30px;
+                    padding: 25px;
+                    position: relative;
+        
+                    .texto {
+                        font-size: 12px;
+                        text-align: right;
+                        line-height: 25px;
+                        margin: 0;
+                    }
+        
+                    &::after {
+                        content: "";
+                        display: block;
+                        background: white;
+                        box-shadow: -1px 1px 0 0 $primary;
+                        position: absolute;
+                        top: 50%;
+                        left: -12px;
+                        width: 25px;
+                        height: 25px;
+                        transform: translateY(-50%) rotate(45deg);
+                    }
+                }
+        
+                .icono {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: $primary;
+                    font-size: 25px;
+                    background: white;
+                    border-radius: 50%;
+                    box-shadow: 0 0 0 1px $lightprimary, 0 0 0 3px white, 0 0 0 6px $primary;
+                    position: absolute;
+                    top: 50%;
+                    left: 5px;
+                    z-index: 25;
+                    width: 50px;
+                    height: 50px;
+                    transform: translateY(-50%);
+                }
+        
+                
             }
         }
 
@@ -825,16 +799,78 @@ h3 {
             background-size: 1px 15px;
             position: absolute;
             top: 0;
-            left: 50%;
+            left: 30px;
             bottom: 0;
             width: 1px;
             height: 100%;
-            transform: translateX(-50%);
         }
     }
 }
 
 // Mobile First
+
+@media only screen and (min-width: $mobile) {
+    #razones {
+        padding: 150px 0;
+
+        .timeline {
+
+            .fila {
+                justify-content: flex-start;
+    
+                .columna {
+                    padding: 25px 55px 25px 0;
+                    width: 50%;
+    
+                    .tarjeta {
+    
+                        &::after {
+                            box-shadow: 1px -1px 0 0 $primary;
+                            left: auto;
+                            right: -12px;
+                        }
+                    }
+    
+                    .icono {
+                        left: auto;
+                        right: -25px;
+                    }
+                }
+    
+                &.invertida {
+                    justify-content: flex-end;
+    
+                    .columna {
+                        padding: 25px 0 25px 55px;
+    
+                        .tarjeta {
+    
+                            .texto {
+                                text-align: right;
+                            }
+    
+                            &::after {
+                                box-shadow: -1px 1px 0 0 $primary;
+                                left: -12px;
+                                right: auto;
+                            }
+                        }
+    
+                        .icono {
+                            left: -25px;
+                            right: auto;
+                        }
+                    }
+                }
+            }
+    
+            &::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+}
 
 @media only screen and (min-width: $tablet) {
     #razones {
