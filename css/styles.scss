@@ -64,7 +64,7 @@ h3 {
     }
 }
 
-// Text Selection
+// Selección de texto
 
 ::-moz-selection { color: white; background-color: $primary }
 ::selection      { color: white; background-color: $primary }
@@ -74,6 +74,16 @@ h3 {
 ::-webkit-scrollbar {
     width: 0;
 }
+
+// Placeholder
+
+::-webkit-input-placeholder { color: lightgray; transition: .5s }
+:-ms-input-placeholder      { color: lightgray; transition: .5s }
+::placeholder               { color: lightgray; transition: .5s }
+
+:focus::-webkit-input-placeholder { color: transparent }
+:focus:-ms-input-placeholder      { color: transparent }
+:focus::placeholder               { color: transparent }
 
 // Top Button
 
@@ -102,10 +112,14 @@ h3 {
         color: white;
     }
 
+    &:visited {
+        border-radius: 2px;
+    }
+
     &:hover {
         border-radius: 50%;
     }
-
+    
     &:active {
         border-radius: 2px;
     }
@@ -936,79 +950,82 @@ h3 {
 // ──────────────── //
 
 #contacto {
-    padding: 150px 0;
+    padding: 0;
     position: relative;
     overflow: hidden; // Para evitar que el blur se salga de los extremos
 
     .fila {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         margin: 0 auto;
         max-width: 1000px;
         position: relative;
         z-index: 50;
 
-        .columna:nth-child(1) {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-direction: column;
-            background: url(../img/bg/contacto.jpg) no-repeat center;
-            background-size: cover;
-            padding: 50px;
-            margin: 25px 0;
-            position: relative;
-            width: 40%;
+        .columna {
+            width: 100%;
 
-            h3 {
-                color: white;
-                border-color: rgba(255,255,255,.25);
-                margin: 0;
+            &:nth-child(1) {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column;
+                background: url(../img/bg/contacto.jpg) no-repeat center;
+                background-size: cover;
+                padding: 50px 25px;
                 position: relative;
-                z-index: 50;
-                width: 100%;
-            }
-
-            .datos-contacto {
-                list-style: none;
-                color: white;
-                border: none;
-                padding: 0;
-                margin: 0;
-                position: relative;
-                z-index: 50;
-
-                .dato {
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                    font-size: 12px;
-                    font-weight: 300;
-
-                    .icono {
+    
+                h3 {
+                    color: white;
+                    border-color: rgba(255,255,255,.25);
+                    margin: 0 0 75px;
+                    position: relative;
+                    z-index: 50;
+                    width: 100%;
+                }
+    
+                .datos-contacto {
+                    list-style: none;
+                    color: white;
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                    position: relative;
+                    z-index: 50;
+    
+                    .dato {
                         display: flex;
                         align-items: center;
-                        justify-content: center;
-                        border: 1px solid rgba(255,255,255,.25);
-                        border-radius: 50%;
-                        margin-right: 10px;
-                        width: 25px;
-                        height: 25px;
+                        justify-content: flex-start;
+                        font-size: 10px;
+                        font-weight: 300;
+    
+                        .icono {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 12px;
+                            border: 1px solid rgba(255,255,255,.25);
+                            border-radius: 50%;
+                            margin-right: 10px;
+                            width: 25px;
+                            height: 25px;
+                        }
                     }
                 }
+    
+                .overlay {
+                    background: $primary;
+                    background: linear-gradient(to top right, $darkprimary, $lightprimary);
+                    opacity: .8;
+                }
             }
-
-            .overlay {
-                background: $primary;
-                background: linear-gradient(to top right, $darkprimary, $lightprimary);
-                opacity: .8;
+    
+            &:nth-child(2) {
+                background: white;
+                padding: 50px;
             }
-        }
-
-        .columna:nth-child(2) {
-            background: white;
-            padding: 75px;
-            width: 60%;
         }
     }
 
@@ -1036,13 +1053,15 @@ h3 {
     }
 
     .formulario {
+        margin: 0 auto;
+        max-width: 350px;
 
         .entrada {
             border: none;
             border-bottom: 1px solid lightgray;
             outline: none;
             padding: 15px;
-            margin-bottom: 35px;
+            margin-bottom: 15px;
             width: 100%;
             height: 50px;
             resize: none;
@@ -1073,13 +1092,51 @@ h3 {
     }
 }
 
-::-webkit-input-placeholder { color: lightgray; transition: .5s }
-:-ms-input-placeholder      { color: lightgray; transition: .5s }
-::placeholder               { color: lightgray; transition: .5s }
+// Mobile First
 
-:focus::-webkit-input-placeholder { color: transparent }
-:focus:-ms-input-placeholder      { color: transparent }
-:focus::placeholder               { color: transparent }
+@media only screen and (min-width: $tablet) {
+    #contacto .fila {
+        flex-wrap: nowrap;
+
+        .columna:nth-child(1) {
+            width: 40%;
+
+            h3 {
+                margin: 0;
+            }
+        }
+
+        .columna:nth-child(2) {
+            padding: 75px;
+            width: 60%;
+    
+            .formulario .entrada {
+                margin-bottom: 35px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $laptop) {
+    #contacto {
+        padding: 150px 50px;
+
+        .fila .columna:nth-child(1) {
+            padding: 50px 25px;
+            margin: 25px 0;
+        }
+    }
+}
+
+@media only screen and (min-width: $desktop) {
+    #contacto .fila .columna:nth-child(1) {
+        padding: 50px;
+
+        .datos-contacto .dato {
+            font-size: 12px;
+        }
+    }
+}
 
 // ────────────── //
 //     FOOTER     //
