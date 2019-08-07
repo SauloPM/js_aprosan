@@ -338,8 +338,7 @@ h3 {
 .callout {
     color: white;
     padding: 125px 0;
-    background: $primary;
-    background: linear-gradient(to right, $darkprimary, $lightprimary);
+    position: relative;
 
     .texto {
         display: block;
@@ -347,6 +346,7 @@ h3 {
         line-height: 40px;
         padding: 25px;
         position: relative;
+        z-index: 50;
 
         .comillas {
             font-size: 100px;
@@ -355,6 +355,22 @@ h3 {
             left: 0;
             opacity: .2;
         }
+    }
+
+    .overlay {
+        background: $primary;
+        background: linear-gradient(to right, $darkprimary, $lightprimary);
+        opacity: .85;
+    }
+
+    &.tipo1 {
+        background: url(../img/bg/callout1.jpg) fixed no-repeat center;
+        background-size: cover;
+    }
+
+    &.tipo2 {
+        background: url(../img/bg/callout2.jpg) fixed no-repeat center;
+        background-size: cover;
     }
 }
 
@@ -557,7 +573,7 @@ h3 {
 // ─────────────── //
 
 #tarifas {
-    background: url(../img/bg/callout.jpg) fixed no-repeat center;
+    background: url(../img/bg/tarifas.jpg) fixed no-repeat center;
     background-size: cover;
     padding: 125px 0;
     position: relative;
@@ -778,7 +794,7 @@ h3 {
             content: "";
             display: block;
             background: linear-gradient(white 50%, $primary 50%) top repeat-y;
-            background-size: 15px 15px;
+            background-size: 1px 15px;
             position: absolute;
             top: 0;
             left: 50%;
