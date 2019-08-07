@@ -105,6 +105,10 @@ h3 {
     &:hover {
         border-radius: 50%;
     }
+
+    &:active {
+        border-radius: 2px;
+    }
 }
 
 // Utils
@@ -292,6 +296,10 @@ h3 {
             &:nth-child(3) {
                 flex-shrink: 4;
             }
+        }
+
+        .heading a {
+            bottom: 0;
         }
     }
 }
