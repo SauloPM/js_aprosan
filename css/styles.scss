@@ -41,10 +41,6 @@ p, li {
     margin: 0;
 }
 
-p {
-    margin-bottom: 25px;
-}
-
 h3 {
     display: block;
     color: $texto;
@@ -264,10 +260,7 @@ h3 {
     }
 }
 
-@keyframes movimiento {
-    from { transform: scale(0) }
-    to   { transform: scale(1) }
-}
+// Mobile First
 
 @media only screen and (max-width: 1200px) {
     #header .fila .columna {
@@ -283,7 +276,7 @@ h3 {
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: $tablet) {
     #header .fila .columna {
         &:nth-child(2) {
             height: 40%;
@@ -332,13 +325,27 @@ h3 {
 // ───────────── //
 
 #about {
-    padding: 50px 0;
+    padding: 150px 0;
 
     p {
-        font-size: 18px;
+        font-size: 15px;
         text-align: center;
+        line-height: 35px;
+    }
+}
+
+// Mobile First
+
+@media only screen and (min-width: $mobile) {
+    #about p {
+        font-size: 18px;
         line-height: 50px;
-        margin-bottom: 150px;
+    }
+}
+
+@media only screen and (min-width: $tablet) {
+    #about {
+        padding: 0 0 150px;
     }
 }
 
@@ -348,13 +355,13 @@ h3 {
 
 .callout {
     color: white;
-    padding: 125px 0;
+    padding: 75px 0;
     position: relative;
 
     .texto {
         display: block;
-        font-size: 20px;
-        line-height: 40px;
+        font-size: 15px;
+        line-height: 30px;
         padding: 25px;
         position: relative;
         z-index: 50;
@@ -382,6 +389,24 @@ h3 {
     &.tipo2 {
         background: url(../img/bg/callout2.jpg) fixed no-repeat center;
         background-size: cover;
+    }
+}
+
+// Mobile First
+
+@media only screen and (min-width: $mobile) {
+    .callout {
+        padding: 125px 0;
+
+        .texto {
+            font-size: 20px;
+            line-height: 40px;
+            padding: 25px;
+    
+            .comillas {
+                font-size: 100px;
+            }
+        }
     }
 }
 
@@ -462,7 +487,6 @@ h3 {
 // ─────────────── //
 
 #ventajas {
-    display: none;
     padding: 0;
 
     // Grid
@@ -471,6 +495,7 @@ h3 {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
         background: url(../img/bg/ventajas.jpg) fixed no-repeat center;
         background-size: cover;
 
@@ -479,14 +504,10 @@ h3 {
             position: relative;
             width: 100%;
 
-            &:nth-child(1) {
-                
-                
-                .overlay {
-                    background: #00b4ff;
-                    background: linear-gradient(to top right, $darkprimary, $lightprimary);
-                    opacity: 0.9;
-                }
+            &:nth-child(1) .overlay {
+                background: #00b4ff;
+                background: linear-gradient(to top right, $darkprimary, $lightprimary);
+                opacity: 0.9;
             }
             &:nth-child(2) {
                 background: rgba(245,245,245,.95);
@@ -503,6 +524,7 @@ h3 {
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 125px 50px;
 
         h3 {
             color: white;
@@ -531,52 +553,92 @@ h3 {
         display: flex;
         flex-direction: column;
 
-        & > div {
-            display: flex;
+        .item {
+            text-align: center;
+            padding: 75px;
+            width: 100%;
 
-            .item {
-                text-align: center;
-                padding: 75px;
-                width: 100%;
-
-                .icono {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: $primary;
-                    font-size: 25px;
-                    border-radius: 50%;
-                    box-shadow: 0 0 0 1px $lightprimary, 0 0 0 3px $lightgray, 0 0 0 6px $primary;
-                    margin: 0 auto 25px;
-                    width: 50px;
-                    height: 50px;
-                }
-
-                .titulo {
-                    display: inline-block;
-                    color: $primary;
-                    font-size: 18px;
-                    border-bottom: 1px solid rgba(000,180,255,.25);
-                    padding: 0 10px 10px;
-                    margin: 0 0 25px;
-                }
-
-                .explicacion {
-                    display: block;
-                    color: $texto;
-                    font-size: 13px;
-                    line-height: 25px;
-                }
-
-                &:nth-child(1) {
-                    border-right: 1px solid $gray;
-                }
+            .icono {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $primary;
+                font-size: 25px;
+                border-radius: 50%;
+                box-shadow: 0 0 0 1px $lightprimary, 0 0 0 3px $lightgray, 0 0 0 6px $primary;
+                margin: 0 auto 25px;
+                width: 50px;
+                height: 50px;
             }
 
-            &:first-child .item {
-                border-bottom: 1px solid $gray;
+            .titulo {
+                display: inline-block;
+                color: $primary;
+                font-size: 18px;
+                border-bottom: 1px solid rgba(000,180,255,.25);
+                white-space: nowrap;
+                padding: 0 10px 10px;
+                margin: 0 0 25px;
+            }
+
+            .explicacion {
+                display: block;
+                color: $texto;
+                font-size: 13px;
+                line-height: 25px;
+            }
+
+            &:nth-child(1) {
+                border-right: 1px solid $gray;
             }
         }
+
+        &:first-child .item {
+            border-bottom: 1px solid $gray;
+        }
+
+        & > div { display: flex; flex-wrap: wrap; }
+    }
+}
+
+// Mobile First
+
+@media only screen and (min-width: $mobile) {
+    #ventajas .items {
+        .item {
+            padding: 50px 25px;
+        }
+        & > div {
+            flex-wrap: nowrap;
+        }
+    }
+}
+
+@media only screen and (min-width: $tablet) {
+    #ventajas {
+        
+        .fila {
+            flex-wrap: nowrap;
+    
+            .columna {
+                &:nth-child(1) { width: 40% }
+                &:nth-child(2) { width: 60% }
+            }
+        }
+
+        .heading {
+            padding: 50px;
+        }
+    }
+}
+
+@media only screen and (min-width: $desktop) {
+    #ventajas .fila .columna {
+        &:nth-child(1) { width: 100% }
+        &:nth-child(2) { width: 100% }
+    }
+    #ventajas .items .item {
+        padding: 75px;
     }
 }
 
