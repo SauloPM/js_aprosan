@@ -1164,6 +1164,120 @@ footer {
     }
 }
 
+// ─────────────── //
+//     MODALES     //
+// ─────────────── //
+
+.modal {
+    .modal-content {
+        border-radius: 2px;
+
+        // Header
+
+        .modal-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url(../img/bg/modal.jpg) fixed no-repeat bottom center;
+            background-size: cover;
+            padding: 50px;
+            position: relative;
+            min-height: 400px;
+
+            .modal-title {
+                color: white;
+                border: none;
+                padding: 0;
+                margin: 0;
+                position: relative;
+                z-index: 50;
+            }
+
+            .close {
+                color: white;
+                font-size: 30px;
+                font-weight: 300;
+                outline: none;
+                line-height: 15px;
+                margin: 0;
+                position: absolute;
+                top: 25px;
+                right: 25px;
+                z-index: 50;
+                opacity: .75;
+                transition: .5s ease-in-out;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            .overlay {
+                background: $primary;
+                background: linear-gradient(to right, $darkprimary, $lightprimary);
+                opacity: .75;
+            }
+        }
+
+        // Body
+
+        .modal-body {
+            padding: 0 50px 50px;
+
+            h3 {
+                font-size: 15px;
+                text-align: left;
+                letter-spacing: 5px;
+                padding: 0 20px 10px;
+                margin: 50px 0;
+            }
+
+            h4 {
+                font-size: 18px;
+                font-weight: 500;
+                margin: 25px 0;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0 25px;
+                margin: 0;
+
+                li {
+                    padding: 0;
+                    margin: 0;
+                
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        background: $lightprimary;
+                        border-radius: 50%;
+                        margin-right: 10px;
+                        position: relative;
+                        bottom: 3px;
+                        width: 4px;
+                        height: 4px;
+                    }
+                }
+            }
+        }
+
+        // Footer
+
+        .modal-footer {
+            background: $primary;
+            background: linear-gradient(to right, $darkprimary, $lightprimary);
+            padding: 25px 50px;
+
+            p {
+                color: white;
+                font-size: 12px;
+                line-height: 25px;
+            }
+        }
+    }
+}
+
 // ───────────────── //
 //     PRELOADER     //
 // ───────────────── //
