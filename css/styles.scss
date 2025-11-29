@@ -5,6 +5,7 @@ $darkprimary : rgb(000,150,225);
 $lightprimary: rgb(020,200,255);
 $gray        : rgb(225,225,225);
 $lightgray   : rgb(245,245,245);
+$white       : rgb(255,255,255);
 
 // Responsive
 $mobile : 480px;
@@ -25,9 +26,18 @@ body {
     font-size: 15px;
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 50px;
     position: relative;
     overflow: hidden; // Preloader
+}
+
+main {
+    background: $white;
+    border: 1px solid $gray;
+    border-radius: 4px;
+    box-shadow: 0 15px 18px -5px $lightgray;
+    margin: 0 auto;
+    max-width: 2000px;
 }
 
 section {
